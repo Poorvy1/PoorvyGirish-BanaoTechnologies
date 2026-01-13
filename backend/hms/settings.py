@@ -14,9 +14,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'users',
-    'appointments',
+    'users.apps.UsersConfig',
+    'appointments.apps.AppointmentsConfig',
 ]
+
 
 AUTH_USER_MODEL = 'users.User'
 
