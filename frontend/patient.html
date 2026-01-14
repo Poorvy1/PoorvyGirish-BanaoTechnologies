@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Patient - Book Appointment</title>
+</head>
+<body>
+
+<h2>Book Appointment</h2>
+
+<form id="bookForm">
+  <input type="number" id="slot_id" placeholder="Slot ID" required><br><br>
+  <button type="submit">Book Slot</button>
+</form>
+
+<p id="msg"></p>
+
+<script>
+document.getElementById("bookForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  fetch(`http://127.0.0.1:8000/appointments/book/${slot_id.value}/`, {
+    method: "POST"
+  })
+  .then(res => res.json())
+  .then(result => {
+    document.getElementById("msg").innerText = "Appointment booked successfully";
+  })
+  .catch(() => {
+    document.getElementById("msg").innerText = "Booking failed";
+  });
+});
+</script>
+
+</body>
+</html>
