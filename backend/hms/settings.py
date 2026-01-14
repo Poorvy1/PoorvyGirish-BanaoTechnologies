@@ -14,10 +14,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'corsheaders',                     # 👈 ADD THIS
+
     'users.apps.UsersConfig',
     'appointments.apps.AppointmentsConfig',
 ]
-
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -29,6 +30,8 @@ DATABASES = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',   # 👈 ADD THIS (VERY IMPORTANT)
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -36,6 +39,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 ]
+
 
 ROOT_URLCONF = 'hms.urls'
 
@@ -64,3 +68,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOW_ALL_ORIGINS = True
+
