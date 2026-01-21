@@ -43,21 +43,22 @@ def signup(request):
         role=role
     )
 
-    # Call serverless email service
+    # Call serverless email service (NON-BLOCKING)
     try:
         requests.post(
             "http://localhost:3000/send-email",
             json={
                 "type": "SIGNUP_WELCOME",
-                "email": email
+                "to_email": email   
             },
             timeout=5
         )
     except Exception:
-        pass  # email failure should not break signup
+        pass  # Email failure should not break signup
 
     return JsonResponse({
         "message": "Signup successful",
         "username": user.username,
         "role": user.role
     })
+
