@@ -1,0 +1,11 @@
+# Google credentials
+credentials.json
+backend/credentials.json
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# venv
+venv/
